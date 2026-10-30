@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartQueue | Queue Management System</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<nav class="navbar"><a class="brand" href="{{ url_for('home') }}">⌁ Smart<span>Queue</span></a>
+<div class="navlinks"><a href="{{ url_for('home') }}">Home</a><a href="{{ url_for('services') }}">Services</a>
+{% if user %}<a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('logout') }}">Logout</a>
+{% else %}<a href="{{ url_for('login') }}">Login</a><a href="{{ url_for('register') }}">Register</a>{% endif %}</div></nav>
+<main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}
+<div class="notice {{ 'error' if category == 'error' else '' }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+
+<span class="badge">YOUR PERSONAL SPACE</span><h1 class="section-title">Dashboard</h1><p class="muted">Welcome, {{ user.name }}. Here is your queue activity.</p>
+<div class="stats"><div class="stat"><span>Total Tokens Generated</span><b>{{ total_tokens }}</b></div><div class="stat"><span>Currently Waiting</span><b>{{ waiting_tokens }}</b></div><div class="stat"><span>Your Tokens</span><b>{{ my_tokens|length }}</b></div></div>
+<div class="card"><h2>Generate a New Token</h2><form method="post" action="{{ url_for('get_token') }}"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
+<div><label>Choose Service</label><select name="service" required><option value="">Select service</option>{% for service in ['Banking','Aadhaar Services','Document Verification','General Enquiry'] %}<option>{{ service }}</option>{% endfor %}</select></div>
+<div><label>Priority</label><select name="priority"><option>Normal</option><option>Senior Citizen</option></select></div></div><button type="submit">＋ Generate My Token</button></form></div>
+<div class="card"><h2>My Token History</h2>{% if my_tokens %}<div class="table-wrap"><table><tr><th>Token</th><th>Service</th><th>Priority</th><th>Status</th><th>Date</th></tr>
+{% for token in my_tokens %}<tr><td><strong>{{ token.token }}</strong></td><td>{{ token.service }}</td><td>{{ token.priority }}</td><td class="status">{{ token.status }}</td><td>{{ token.date }}</td></tr>{% endfor %}</table></div>{% else %}<p class="muted">No tokens generated yet. Generate your first token above.</p>{% endif %}</div>
+</main><footer class="footer">SmartQueue Management System • Academic Mini Project</footer></body></html>

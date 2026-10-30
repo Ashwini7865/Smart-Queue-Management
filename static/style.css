@@ -1,0 +1,38 @@
+*{box-sizing:border-box}
+body{margin:0;background:#07101f;color:#eef4ff;font-family:Segoe UI,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.navbar{min-height:70px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:#091426;border-bottom:1px solid #263a5a;position:sticky;top:0;z-index:5}
+.brand{font-size:23px;font-weight:800}.brand span{color:#61b6ff}
+.navlinks{display:flex;gap:22px;align-items:center}.navlinks a{font-size:14px;color:#c7d4eb;font-weight:650}.navlinks a:hover{color:#70c5ff}
+.container{width:min(1160px,92%);margin:35px auto;min-height:78vh}
+.hero{min-height:420px;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:40px}
+.badge{color:#70c5ff;font-size:12px;font-weight:800;letter-spacing:1.5px}
+.hero h1{font-size:58px;line-height:1.05;margin:15px 0}.hero h1 span{color:#61b6ff}
+.hero p{font-size:18px;line-height:1.7;color:#9eb0ce;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn,button{display:inline-block;border:0;border-radius:9px;padding:12px 18px;background:#2d82ff;color:white;font-weight:800;cursor:pointer;font-size:14px}
+.btn.secondary,.secondary{background:#182944;border:1px solid #304664}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#101d33;border:1px solid #263a5a;border-radius:15px;padding:22px;margin:15px 0}
+.module{display:block;min-height:180px;transition:.2s}.module:hover{border-color:#3f7bb9;transform:translateY(-3px)}
+.module-icon{font-size:30px}.module h3{margin:12px 0 7px}.module p{color:#9eb0ce;line-height:1.5;font-size:14px}
+.section-title{font-size:27px;margin:25px 0 10px}.muted{color:#9eb0ce}
+.notice{padding:13px 17px;border-radius:9px;margin:0 0 18px;background:#10372b;color:#a9f4c8}
+.notice.error{background:#4a202a;color:#ffbbc3}
+.form-card{max-width:570px;margin:30px auto}.form-card h2{margin-top:0}
+.form-card label{display:block;font-weight:700;margin:16px 0 7px}
+.form-card input,.form-card select,.form-card select{width:100%;padding:13px;background:#081326;color:#fff;border:1px solid #385174;border-radius:9px;font-size:15px}
+.form-card button{margin-top:20px;width:100%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.stat{background:#101d33;border:1px solid #263a5a;border-radius:14px;padding:20px}
+.stat span{color:#9eb0ce;font-size:14px}.stat b{display:block;font-size:36px;margin-top:8px;color:#70bdff}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:13px;border-bottom:1px solid #263a5a;text-align:left;font-size:14px}
+th{color:#9eb0ce}.status{color:#61e6a5;font-weight:800}
+.token-large{font-size:42px;color:#70bdff;font-weight:900;letter-spacing:2px}
+.hero-panel{min-height:300px;border:1px solid #263a5a;border-radius:24px;background:linear-gradient(145deg,#122541,#0d192c);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px}
+.hero-icon{font-size:105px}.tips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tips div{background:#14243d;padding:15px;border-radius:10px;color:#c7d4eb}
+.footer{text-align:center;color:#7185a5;padding:25px;border-top:1px solid #1e304a;font-size:13px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.tips{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:48px}}
+@media(max-width:680px){.navlinks{gap:10px}.hero{grid-template-columns:1fr;padding:25px 0}.hero h1{font-size:43px}.grid,.stats,.tips{grid-template-columns:1fr}.card{padding:18px}}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartQueue | Queue Management System</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<nav class="navbar"><a class="brand" href="{{ url_for('home') }}">⌁ Smart<span>Queue</span></a>
+<div class="navlinks"><a href="{{ url_for('home') }}">Home</a><a href="{{ url_for('services') }}">Services</a>
+{% if user %}<a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('logout') }}">Logout</a>
+{% else %}<a href="{{ url_for('login') }}">Login</a><a href="{{ url_for('register') }}">Register</a>{% endif %}</div></nav>
+<main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}
+<div class="notice {{ 'error' if category == 'error' else '' }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+
+<section class="hero"><div><span class="badge">SMART QUEUE MANAGEMENT SYSTEM</span>
+<h1>Queue less.<br><span>Live more.</span></h1>
+<p>Say goodbye to long waiting lines. Book your digital token, choose your service and track your queue activity from one simple dashboard.</p>
+<div class="actions"><a class="btn" href="{{ url_for('dashboard') if user else url_for('login') }}">🎟 Get a Token</a><a class="btn secondary" href="{{ url_for('services') }}">Explore Services</a></div></div>
+<div class="hero-panel"><div class="hero-icon">🎟️</div><h2>Smart Queue System</h2><p class="muted">Simple • Fast • Organized</p><div class="token-large">Q-READY</div></div></section>
+<h2 class="section-title">Our Services</h2><div class="grid">
+<a class="card module" href="{{ url_for('services') }}"><div class="module-icon">🏦</div><h3>Banking Services</h3><p>Get assistance with your banking needs.</p></a>
+<a class="card module" href="{{ url_for('services') }}"><div class="module-icon">🪪</div><h3>Aadhaar Services</h3><p>Access Aadhaar related support.</p></a>
+<a class="card module" href="{{ url_for('services') }}"><div class="module-icon">📄</div><h3>Document Verification</h3><p>Organized document verification queue.</p></a>
+<a class="card module" href="{{ url_for('services') }}"><div class="module-icon">💬</div><h3>General Enquiry</h3><p>Get answers to general questions.</p></a></div>
+<div class="card"><span class="badge">HOW IT WORKS</span><h2>Get your token in 4 simple steps</h2><div class="tips"><div>① Create an account</div><div>② Select a service</div><div>③ Generate a token</div><div>④ Track your token</div></div></div>
+</main><footer class="footer">SmartQueue Management System • Academic Mini Project</footer></body></html>

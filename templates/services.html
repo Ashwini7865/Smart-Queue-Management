@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartQueue | Queue Management System</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<nav class="navbar"><a class="brand" href="{{ url_for('home') }}">⌁ Smart<span>Queue</span></a>
+<div class="navlinks"><a href="{{ url_for('home') }}">Home</a><a href="{{ url_for('services') }}">Services</a>
+{% if user %}<a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('logout') }}">Logout</a>
+{% else %}<a href="{{ url_for('login') }}">Login</a><a href="{{ url_for('register') }}">Register</a>{% endif %}</div></nav>
+<main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}
+<div class="notice {{ 'error' if category == 'error' else '' }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+
+<span class="badge">AVAILABLE SERVICES</span><h1 class="section-title">Choose what you need</h1><p class="muted">Select a service from your dashboard to generate a digital token.</p>
+<div class="grid">{% for service in services %}<div class="card module"><div class="module-icon">{{ ['🏦','🪪','📄','💬'][loop.index0] }}</div><h3>{{ service }}</h3><p>Get organized assistance without standing in a long queue.</p></div>{% endfor %}</div>
+<a class="btn" href="{{ url_for('dashboard') if user else url_for('login') }}">Get Your Token →</a>
+</main><footer class="footer">SmartQueue Management System • Academic Mini Project</footer></body></html>
